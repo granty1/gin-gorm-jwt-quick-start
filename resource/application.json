@@ -1,0 +1,19 @@
+{
+    "db": {
+        "username": "root",
+        "password": "YINGL19980716.",
+        "path": "127.0.0.1:3306",
+        "dbname": "gin-cli",
+        "config": "charset=utf8&parseTime=True&loc=Local",
+        "type": "mysql"
+    },
+    "sys": {
+        "port": 9001
+    },
+    "jwt": {
+        "secret": "gg1231",
+        "headerKey" : "Access-Token",
+        "expireTime" : 2,
+        "issuer" : "Grant"
+    }
+}
