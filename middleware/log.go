@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+//Logger as middleware for gin-cli
 func Logger() gin.HandlerFunc {
 	log := log.Log
 
@@ -23,7 +24,7 @@ func Logger() gin.HandlerFunc {
 		// read request content
 		req, _ := httputil.DumpRequest(c.Request, true)
 		log.Infof(`| %s | %s | %s | %5s | %s\n`,
-			`Request :`, method, clientIP, path, string(req),)
+			`Request :`, method, clientIP, path, string(req))
 		// replace writer
 		cusWriter := &responseBodyWriter{
 			ResponseWriter: c.Writer,
@@ -42,7 +43,7 @@ func Logger() gin.HandlerFunc {
 			`Response:`,
 			statusCode,
 			latency,
-			cusWriter.body.String(),)
+			cusWriter.body.String())
 	}
 }
 

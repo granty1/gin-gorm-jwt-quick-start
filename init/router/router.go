@@ -8,7 +8,7 @@ import (
 
 func Init() *gin.Engine {
 	g := gin.Default()
-	baseGroup := g.Group("/gin-cli")
+	baseGroup := g.Group("")
 
 	baseGroup.Use(middleware.Logger())
 

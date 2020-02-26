@@ -8,7 +8,7 @@
         "type": "mysql"
     },
     "sys": {
-        "port": 9001
+        "port": 8001
     },
     "jwt": {
         "secret": "gg1231",
