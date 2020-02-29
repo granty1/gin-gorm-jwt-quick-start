@@ -11,12 +11,12 @@ import uuid "github.com/satori/go.uuid"
 type BaseUser struct {
 	gorm.Model
 	UUID     uuid.UUID `json:"uuid"`
-	Username string    `json:"userName"`
+	Username string    `json:"userName" uri:"name"`
 	Password string    `json:"-"`
 	Email    string    `json:"email"`
 	NickName string    `json:"nickName"`
 	Phone    string    `json:"phone"`
-	RoleID   string    `json:"roleId"`
+	RoleID   string    `json:"roleId" uri:"roleId"`
 	Role     BaseRole  `json:"role" gorm:"ForeignKey:RoleId;AssociationForeignKey:RoleId"`
 }
 

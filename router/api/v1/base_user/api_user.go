@@ -5,7 +5,42 @@ import (
 	"github.com/gin-cli/pkg/app"
 	"github.com/gin-cli/pkg/e"
 	"github.com/gin-gonic/gin"
+	uuid "github.com/satori/go.uuid"
 	"net/http"
+)
+
+var (
+	roles = []model.BaseRole{
+		model.BaseRole{
+			RoleId:   "1",
+			RoleName: "Administrator",
+		},
+		model.BaseRole{
+			RoleId:   "2",
+			RoleName: "Manual User",
+		},
+	}
+
+	users = []model.BaseUser{
+		model.BaseUser{
+			UUID:     uuid.NewV1(),
+			Username: "Grant",
+			Password: "",
+			Email:    "",
+			NickName: "",
+			Phone:    "",
+			RoleID:   "1",
+		},
+		model.BaseUser{
+			UUID:     uuid.NewV1(),
+			Username: "Karl",
+			Password: "",
+			Email:    "",
+			NickName: "",
+			Phone:    "",
+			RoleID:   "2",
+		},
+	}
 )
 
 //UserList return list of user.
@@ -16,16 +51,7 @@ func UserList(c *gin.Context) {
 
 //TestRoles data
 func TestRoles(c *gin.Context) {
-	data := []model.BaseRole{
-		model.BaseRole{
-			RoleId:   "1",
-			RoleName: "Test",
-		},
-		model.BaseRole{
-			RoleId:   "2",
-			RoleName: "Train",
-		},
-	}
+	data := roles
 	c.JSON(http.StatusOK, gin.H{
 		"data": data,
 	})
@@ -64,4 +90,9 @@ func TestPages(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"data": data,
 	})
+}
+
+
+func GetUser(c *gin.Context) {
+
 }
