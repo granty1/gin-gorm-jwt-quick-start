@@ -20,10 +20,10 @@ type GlobalConfig struct {
 
 //JWT object to control jwt
 type JWT struct {
-	HeaderKey  string `json:"headerKey"`
-	Secret     string `json:"secret"`
-	ExpireTime time.Duration    `json:"expireTime"`
-	Issuer     string `json:"issuer"`
+	HeaderKey  string        `json:"headerKey"`
+	Secret     string        `json:"secret"`
+	ExpireTime time.Duration `json:"expireTime"`
+	Issuer     string        `json:"issuer"`
 }
 
 //SystemConfig manage system settings

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/gin-cli/config"
+	"github.com/gin-cli/init/jwk"
 	"github.com/gin-cli/init/log"
 	"github.com/gin-cli/init/migrate"
 	"github.com/gin-cli/init/router"
@@ -14,6 +15,7 @@ import (
 
 func main() {
 	log.Init()
+	jwk.Init()
 	model.Init(config.Config.DB)
 	migrate.RegisterTables()
 

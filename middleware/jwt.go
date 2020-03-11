@@ -3,6 +3,7 @@ package middleware
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-cli/config"
+	"github.com/gin-cli/init/jwk"
 	"github.com/gin-cli/pkg/app"
 	"github.com/gin-cli/pkg/e"
 	"github.com/gin-gonic/gin"
@@ -62,14 +63,14 @@ func NewClaims(id uuid.UUID, name, roleId string) Claims {
 }
 
 func (c *CustomClaims) GenerateToken() (string, error) {
-	t := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
-	return t.SignedString([]byte(config.Config.JWT.Secret))
+	t := jwt.NewWithClaims(jwt.SigningMethodRS256, c)
+	return t.SignedString(jwk.PrivateKey)
 }
 
 func parseToken(token string) (*CustomClaims, int) {
 	var code int
 	t, err := jwt.ParseWithClaims(token, &CustomClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return []byte(config.Config.JWT.Secret), nil
+		return jwk.PublicKey, nil
 	})
 	if err != nil {
 		code = e.ERROR_AUTH_CHECK_TOKEN_FAIL
@@ -90,7 +91,7 @@ func parseToken(token string) (*CustomClaims, int) {
 }
 
 func isExpire(expire int64) bool {
-	if expire - time.Now().Unix() < 0 {
+	if expire-time.Now().Unix() < 0 {
 		return true
 	}
 	return false

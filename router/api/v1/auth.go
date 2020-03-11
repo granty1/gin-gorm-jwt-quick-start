@@ -12,13 +12,14 @@ import (
 type LoginRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
+	Plain    bool   `json:"plain"`
 }
 
 func Login(c *gin.Context) {
 	rep := app.NewRep(c)
 	var req LoginRequest
 	err := c.BindJSON(&req)
-	if err!= nil {
+	if err != nil {
 		rep.Ok(e.INVALID_PARAMS)
 		return
 	}
@@ -29,12 +30,16 @@ func Login(c *gin.Context) {
 		return
 	}
 	claims := middleware.NewClaims(u.UUID, u.Username, u.RoleID)
-	token, err := claims.GenerateToken()
-	if err != nil {
-		log.Log.Error(err)
-		rep.Ok(e.ERROR_AUTH_TOKEN)
-		return
-	}
+	if req.Plain {
+		rep.JSON(e.SUCCESS, claims)
+	} else {
+		token, err := claims.GenerateToken()
+		if err != nil {
+			log.Log.Error(err)
+			rep.Ok(e.ERROR_AUTH_TOKEN)
+			return
+		}
 
-	rep.JSON(e.SUCCESS, token)
+		rep.JSON(e.SUCCESS, token)
+	}
 }

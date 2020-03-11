@@ -3,6 +3,7 @@ module github.com/gin-cli
 go 1.13
 
 require (
+	github.com/auth0-community/go-auth0 v1.0.0
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/fsnotify/fsnotify v1.4.7
@@ -33,5 +34,6 @@ require (
 	golang.org/x/sys v0.0.0-20191224085550-c709ea063b76 // indirect
 	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
+	gopkg.in/square/go-jose.v2 v2.4.1
 	gopkg.in/yaml.v2 v2.2.7 // indirect
 )

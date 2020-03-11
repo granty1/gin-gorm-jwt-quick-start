@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gin-cli.iml" filepath="$PROJECT_DIR$/.idea/gin-cli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gin-gorm-jwt-quick-start.iml" filepath="$PROJECT_DIR$/.idea/gin-gorm-jwt-quick-start.iml" />
     </modules>
   </component>
 </project>

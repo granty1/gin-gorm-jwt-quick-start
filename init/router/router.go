@@ -14,6 +14,7 @@ func Init() *gin.Engine {
 
 	routers.AuthRoutes(baseGroup)
 	routers.UsersRoutes(baseGroup)
+	routers.JWKRoutes(baseGroup)
 
 	return g
 }
